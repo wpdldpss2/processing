@@ -1,0 +1,61 @@
+//마우스를 클릭하면 불을 끄고 키보드를 누르면 불을 키는 사람
+
+int lightColor = 255; //빛 색상
+int manColor = 0; //선 색상
+int bulbColorA = 255; //전구 A
+int bulbColorB = 220; //전구 B
+
+void setup() {
+  size(1000, 1000);
+  background(255);
+}
+
+void draw() {
+
+  background(lightColor); //배경은 빛 색상으로
+
+  noStroke(); //테두리 지우기
+  fill(bulbColorA, bulbColorB, 0); // 전구 색상 설정
+  ellipse(500, 150, 50, 50); // 전구 사이즈 설정
+
+  stroke(manColor); // 선 색상 돌려놓기
+  fill(lightColor);
+  triangle(500, 100, 450, 150, 550, 150); //등 갓
+
+  noFill(); // 전구에 넣었던 색상 빼기
+
+  rect(630, 530, 20, 20); //스위치1
+  rect(633, 533, 14, 14); //스위치2
+
+  line(0, 670, 1000, 670); //바닥
+
+  line(500, 0, 500, 100); //등 선
+
+  rect(150, 400, 150, 270); //문
+  ellipse(170, 530, 20, 20); //손잡이
+
+  ellipse(700, 500, 26, 26); //얼굴
+  line(700, 513, 700, 600); // 몸통
+  line(700, 600, 680, 670); //왼다리
+  line(700, 600, 720, 670); //오른다리
+  line(700, 540, 640, 540); //왼팔
+  line(700, 540, 720, 600); //오른팔
+}
+
+void mousePressed() {
+  //마우스 클릭시
+  lightColor = 0; //불 꺼짐
+  manColor = 255; // 선 반색상 전
+
+  bulbColorA = 50; //전구 어두워짐
+  bulbColorB = 50; //전구 어두워짐
+}
+
+void keyPressed() {
+  //키보드 클릭시
+  lightColor = 255; //불 켜짐
+  manColor = 0; // 선 색상 원래대로
+
+  bulbColorA =255; //전구 켜짐
+  bulbColorB =220; //전구 켜짐
+}
