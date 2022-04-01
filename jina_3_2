@@ -1,0 +1,37 @@
+//마우스로 클릭해서 찍는 고양이 스탬프
+
+void setup() {
+  size(1000, 1000);
+  background(255);
+  noStroke();
+}
+
+void draw() {
+  if (mousePressed) { //마우스 클릭시마다 아래의 그림을 그리게 만든다
+    fill(#e56d29); //갈색으로
+    ellipse(mouseX, mouseY, 50, 50); //얼굴
+    triangle(mouseX-23, mouseY-10, mouseX-10, mouseY-20, mouseX-25, mouseY-25); //귀1
+    triangle(mouseX+23, mouseY-10, mouseX+10, mouseY-20, mouseX+25, mouseY-25); //귀2
+
+    fill(0); //검정색으로
+    ellipse(mouseX-10, mouseY-5, 7, 7); //눈1
+    ellipse(mouseX+10, mouseY-5, 7, 7); //눈2
+    ellipse(mouseX, mouseY+3, 4, 2); // 코
+
+    fill(255); //하얀색으로
+    ellipse(mouseX-9, mouseY-7, 2, 2); //눈동자1
+    ellipse(mouseX+11, mouseY-7, 2, 2); //눈동자2
+    triangle(mouseX-21, mouseY-13, mouseX-17, mouseY-18, mouseX-22, mouseY-22); //귀속1
+    triangle(mouseX+21, mouseY-13, mouseX+17, mouseY-18, mouseX+22, mouseY-22); //귀속2
+
+    fill(#ffaaaa); //분홍색으로
+    ellipse(mouseX, mouseY+10, 4, 5); //입
+
+    fill(#ff0000); //붉은색으로
+    ellipse(mouseX, mouseY+12, 2, 2); //혀
+  }
+}
+
+void keyPressed() { //키보드 누르면 
+  background(255); //화면 지워짐 
+}
