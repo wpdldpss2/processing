@@ -1,0 +1,26 @@
+//마우스 위치에 따라서 색상과 모양이 달라지는 도형들
+
+void setup(){
+size(1000,1000); 
+background(255); // 배경색 하양 
+
+}
+
+
+
+void draw(){
+  strokeWeight(15); // 테두리 15로 설정 
+  stroke(mouseX/4,mouseY/4,(mouseX+mouseY)/8); // 마우스의 위치를 이용해서 색상 변경 
+  point(mouseX,mouseY); // 마우스 위치에 점 생성 
+  
+  ellipse(500,500,mouseY,mouseX); // 중심에 중점을 둔 원이 마우스 위치에 따라서 사이즈를 변경한다. 
+  rectMode(CENTER);
+  rect(500,500,mouseX,mouseY); // 중심에 고정되어 마우스의 위치에 따라 사이즈 변하는 사각형 
+  
+  beginShape(); //마우스 위치에 따라 형태가 달라지는 다각형 제작 
+  vertex(mouseX,mouseY); // 마우스의 위치에 따라 좌표가 달라지는 임의의 점 4개 생성 
+  vertex(mouseY,mouseX);
+  vertex(mouseX+mouseY,mouseY-100);
+  vertex(mouseX-mouseY,mouseX+100);
+  endShape(CLOSE); // 생성된 점들을 사용하여 다각형 제작 
+}
