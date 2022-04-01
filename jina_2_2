@@ -1,0 +1,36 @@
+//랜덤한 위치에 선이 계속 생성. 마우스 클릭시 색상 변경.
+
+int line; //여러 변수들 
+int xPos;
+int yPos;
+int col1;
+int col2;
+int col3;
+
+
+void setup() {
+  size(1000, 1000);
+  background(255);
+  col1 = int(random(255)); //색상을 랜덤으로 고르게 설정 
+  col2 = int(random(255));
+  col3 = int(random(255));
+}
+
+void draw() {
+  stroke(col3, col1, col2); //랜덤으로 정해진 변수를 rgb 자리에 넣어 랜덤색상 만들기 
+  xPos = int(random(1000)); //x위치 랜덤생성 
+  yPos = int(random(1000)); //y위치 랜덤생성 
+  line(0, 500, 1000, 500); // 중앙선 
+  line(xPos, 500, xPos, yPos); // 중앙 선에서 시작해서 랜덤 위치에 랜덤 길이로 선 긋기 
+  noStroke();
+  fill(col1, col2, col3); //랜덤으로 설정했던 변수를 rgb위치만 바꿔서 넣기 
+  ellipse(xPos, yPos, 10, 10); //랜덤 선 끝부분에 원 그리기 
+}
+
+void mousePressed() {
+  int temp; //마우스 클릭시 색상 변경  색상은 최대 3개까지만 나옴. 
+  temp = col1;
+  col1 = col2;
+  col2 = col3;
+  col3 = temp;
+}
