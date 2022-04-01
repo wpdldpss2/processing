@@ -1,0 +1,42 @@
+// 마우스로 즐기는 미니 헬리콥터 게임
+
+int yPos = 500; // 헬리콥터의 y 위치
+int cubePosX =1000; // 장애물의 x 위치
+int cubePosY; // 장애물의 y 위치
+
+
+void setup() {
+  size(1000, 1000);
+  cubePosY = int(random(100, 700)); //첫 장애물 사이즈 100에서 700 사이로 랜덤 지정
+}
+
+void draw() {
+
+  background(255); //바탕하양
+  fill(0); //내부 검정
+  yPos = constrain(yPos, 100, 900); // 헬리콥터의 위치가 100~900 사이를 벗어나지 않도록 제한
+
+  if (cubePosX <=0) { // 장애물이 원점을 넘어가면 
+    cubePosY = int(random(100, 700)); // 장애물 길이 재설정 
+    cubePosX = 1000; //장애물이 다시 오른쪽에서 오도록 위치 초기화 
+  }
+
+  ellipse(width/2, yPos, 50, 50); //헬리콥터 그리기 
+
+  if (mousePressed) { //마우스 클릭시 
+    yPos -= 7; //상승 
+  }
+  yPos += 4; //놔두면 하강 
+
+  rect(cubePosX, 0, 100, cubePosY); // 장애물 윗부분 
+  rect(cubePosX, cubePosY+300, 100, 700-cubePosY); // 장애물 아랫부분 
+
+  cubePosX -=5; // 장애물은 5의 속도로 왼쪽을 향해 이동 
+
+  if (375<=cubePosX && cubePosX<=525) { // 장애물이 헬리콥터의 x 위치에 와있으며 
+    if (yPos <= cubePosY || cubePosY+300 <= yPos) { // 헬리콥터가 장애물의 범위에 있으면 == 헬리콥터가 장애물에 닿았으면 
+      fill(255, 0, 0); //붉은색으로 
+      rect(0, 0, 1000, 1000); //화면 가리기 . 장애물 구간 벗어나면 계속 플레이 가능 
+    }
+  }
+}
